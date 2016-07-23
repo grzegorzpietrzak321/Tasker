@@ -17,6 +17,11 @@ namespace Tasker
         {
 
         }
+
+        protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        {
+            
+        }
             public DbSet<Task> Tasks { get; set; }
         //TODO dbset
 

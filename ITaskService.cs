@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
 using System.Runtime.Serialization;
@@ -29,6 +30,7 @@ namespace Tasker
     [DataContract]
     public class Task
     {
+        [Key]
         [DataMember]
         int id { get; set; }
 
