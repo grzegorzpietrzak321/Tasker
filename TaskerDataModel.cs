@@ -15,6 +15,7 @@ namespace Tasker
         public TaskerDataModel()
             : base("name=TaskerDataModel")
         {
+            Database.SetInitializer(new DropCreateDatabaseIfModelChanges<TaskerDataModel>());
 
         }
 
