@@ -12,6 +12,7 @@ namespace Tasker
     // NOTE: In order to launch WCF Test Client for testing this service, please select TaskerService.svc or TaskerService.svc.cs at the Solution Explorer and start debugging.
     public class TaskerService : ITaskerService
     { 
+        
             SqlConnection connection;
             SqlCommand command;
             SqlConnectionStringBuilder connectionStringBuilder;
