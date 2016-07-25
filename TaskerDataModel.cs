@@ -16,7 +16,6 @@ namespace Tasker
             : base("name=TaskerDataModel")
         {
             Database.SetInitializer(new DropCreateDatabaseIfModelChanges<TaskerDataModel>());
-
         }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
@@ -28,18 +27,12 @@ namespace Tasker
 
         //TODO connection string
         
-
         // Add a DbSet for each entity type that you want to include in your model. For more information 
         // on configuring and using a Code First model, see http://go.microsoft.com/fwlink/?LinkId=390109.
 
         // public virtual DbSet<MyEntity> MyEntities { get; set; }
     }
-
     
-
-
-
-
     //public class MyEntity
     //{
     //    public int Id { get; set; }

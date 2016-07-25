@@ -18,8 +18,6 @@ namespace Tasker
     [ServiceContract]
     public interface ITaskService
     {
-//test commit
-
         //TODO move to itaskerservice
         [OperationContract]
         bool CreateTask(Task t);
