@@ -76,18 +76,17 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ITaskerService.cs" />
-    <Compile Include="ITaskService.cs" />
     <Compile Include="Properties\Settings.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Task.cs" />
     <Compile Include="TaskerDataModel.cs" />
     <Compile Include="TaskerService.svc.cs">
       <DependentUpon>TaskerService.svc</DependentUpon>
     </Compile>
-    <Compile Include="TaskService.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

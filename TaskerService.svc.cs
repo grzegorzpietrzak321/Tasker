@@ -12,50 +12,50 @@ namespace Tasker
     // NOTE: In order to launch WCF Test Client for testing this service, please select TaskerService.svc or TaskerService.svc.cs at the Solution Explorer and start debugging.
     public class TaskerService : ITaskerService
     { 
-            SqlConnection connection;
-            SqlCommand command;
-            SqlConnectionStringBuilder connectionStringBuilder;
+        SqlConnection connection;
+        SqlCommand command;
+        SqlConnectionStringBuilder connectionStringBuilder;
 
-            public TaskerService()
-            {
-                ConnectToDB();
-            }
+        public TaskerService()
+        {
+            ConnectToDB();
+        }
 
-            private void ConnectToDB()
-            {
-                connectionStringBuilder = new SqlConnectionStringBuilder();
-                connectionStringBuilder.DataSource = "PC";
-                connectionStringBuilder.InitialCatalog = "TaskerDB";
-                connectionStringBuilder.IntegratedSecurity = true;
+        private void ConnectToDB()
+        {
+            connectionStringBuilder = new SqlConnectionStringBuilder();
+            connectionStringBuilder.DataSource = "PC";
+            connectionStringBuilder.InitialCatalog = "TaskerDB";
+            connectionStringBuilder.IntegratedSecurity = true;
 
-                connection = new SqlConnection(connectionStringBuilder.ToString());
-                command = connection.CreateCommand();
-            }
+            connection = new SqlConnection(connectionStringBuilder.ToString());
+            command = connection.CreateCommand();
+        }
 
-            public bool CreateTask(Task t)
-            {
-                throw new NotImplementedException();
-            }
+        public bool CreateTask(Task t)
+        {
+            throw new NotImplementedException();
+        }
 
-            public bool EditTask(Task t)
-            {
-                throw new NotImplementedException();
-            }
+        public bool EditTask(Task t)
+        {
+            throw new NotImplementedException();
+        }
 
-            public bool FinishTask(int taskId)
-            {
-                throw new NotImplementedException();
-            }
+        public bool FinishTask(int taskId)
+        {
+            throw new NotImplementedException();
+        }
 
-            public string ShowTask(int taskId)
-            {
-                throw new NotImplementedException();
-            }
+        public string ShowTask(int taskId)
+        {
+            throw new NotImplementedException();
+        }
 
-            public string GetTask(int priorityId)
-            {
-                throw new NotImplementedException();
-            }
+        public string GetTask(int priorityId)
+        {
+            throw new NotImplementedException();
+        }
         
         public void DoWork()
         {

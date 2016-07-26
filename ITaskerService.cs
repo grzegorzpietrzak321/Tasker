@@ -14,5 +14,21 @@ namespace Tasker
         [OperationContract]
         void DoWork();
         //TODO 
+
+        [OperationContract]
+        bool CreateTask(Task t);
+
+        [OperationContract]
+        bool EditTask(Task t);
+
+        [OperationContract]
+        bool FinishTask(int taskId);
+
+        [OperationContract]
+        string ShowTask(int taskId);
+
+        [OperationContract]
+        string GetTask(int priorityId);
+
     }
 }
