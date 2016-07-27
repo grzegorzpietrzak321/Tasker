@@ -34,9 +34,26 @@ namespace Tasker
 
         public bool CreateTask(Task t)
         {
-            throw new NotImplementedException();
-            
+            Task task = new Task("Zadanie", "opis zadania", 0, DateTime.Now);
 
+            //TODO pobieranie danych z klienta
+
+            //TODO numer id może być odnajdywany poprzez ostatni createTime (zawsze będzie coraz większy) i inkrementować
+
+            try
+            {
+                using (var conn = new TaskerDataModel())
+                {
+                    conn.Tasks.Add(task);
+                    conn.SaveChanges();
+                }
+                return true;
+            }
+            catch (Exception)
+            {
+                
+                return false;
+            }
         }
 
         public bool EditTask(Task t)
@@ -58,6 +75,8 @@ namespace Tasker
         {
             throw new NotImplementedException();
         }
+
+        //TODO GetAllTasks? do wyświetlenia wszystkiego, żeby poleciała np cała lista
         
         public void DoWork()
         {

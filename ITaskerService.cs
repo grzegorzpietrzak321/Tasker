@@ -12,10 +12,6 @@ namespace Tasker
     public interface ITaskerService
     {
         [OperationContract]
-        void DoWork();
-        //TODO 
-
-        [OperationContract]
         bool CreateTask(Task t);
 
         [OperationContract]
@@ -29,6 +25,5 @@ namespace Tasker
 
         [OperationContract]
         string GetTask(int priorityId);
-
     }
 }

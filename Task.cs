@@ -44,5 +44,19 @@ namespace Tasker
             get { return isFinished; }
             set { isFinished = value; }
         }
+
+        public Task(string name, string description, int priority, DateTime deadlineDate)
+        {
+            this.name = name;
+            this.description = description;
+            this.priority = priority;
+            this.CreateDate = DateTime.Now;
+            this.deadlineDate = deadlineDate;
+        }
+
+        public Task()
+        {
+            
+        }
     }
 }
