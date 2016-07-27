@@ -23,8 +23,15 @@ namespace Tasker
         [DataMember]
         int priority { get; set; }
 
+        
+        DateTime createDate;
+
         [DataMember]
-        DateTime createDate { get; set; }
+        public DateTime CreateDate
+        {
+            get { return createDate; }
+            set { createDate = DateTime.Now; }
+        }
 
         [DataMember]
         DateTime deadlineDate { get; set; }
