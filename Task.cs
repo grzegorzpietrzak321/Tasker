@@ -21,7 +21,7 @@ namespace Tasker
         string description { get; set; }
 
         [DataMember]
-        int priority { get; set; }
+        public int priority { get; set; }
 
         
         DateTime createDate;

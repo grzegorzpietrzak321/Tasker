@@ -24,6 +24,6 @@ namespace Tasker
         string ShowTask(int taskId);
 
         [OperationContract]
-        string GetTask(int priorityId);
+        string GetTasks(int priorityId);
     }
 }

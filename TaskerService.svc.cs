@@ -71,15 +71,23 @@ namespace Tasker
             throw new NotImplementedException();
         }
 
-        public string GetTask(int priorityId)
+        public string GetTasks(int priorityId)
         {
-            throw new NotImplementedException();
-        }
+            IEnumerable<Task> listTasks;
+            try
+            {
+                using (var conn = new TaskerDataModel())
+                {
+                    listTasks = conn.Tasks.Where(i => i.priority == priorityId);
+                }
 
-        //TODO GetAllTasks? do wyświetlenia wszystkiego, żeby poleciała np cała lista
-        
-        public void DoWork()
-        {
+                //TODO serializowac i przesłac do klienta
+                return listTasks.ToString();
+            }
+            catch (Exception e)
+            {
+                return e.ToString();
+            }
         }
     }
 }
