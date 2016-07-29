@@ -4,7 +4,10 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Runtime.Serialization;
 using System.ServiceModel;
+using System.ServiceModel.Dispatcher;
 using System.Text;
+using Newtonsoft.Json;
+
 
 namespace Tasker
 {
@@ -32,18 +35,20 @@ namespace Tasker
             command = connection.CreateCommand();
         }
 
-        public bool CreateTask(Task t)
+        public bool CreateTask(Task task)
         {
-            Task task = new Task("Zadanie", "opis zadania", 0, DateTime.Now);
-
-            //TODO pobieranie danych z klienta
-
-            //TODO numer id może być odnajdywany poprzez ostatni createTime (zawsze będzie coraz większy) i inkrementować
-
+            
+            Task lastElement;
+            //pobieramy ostatni element z tablicy
+            
             try
             {
                 using (var conn = new TaskerDataModel())
                 {
+                    lastElement = conn.Tasks.Last();
+
+                    task.id = lastElement.id++;
+
                     conn.Tasks.Add(task);
                     conn.SaveChanges();
                 }
@@ -73,16 +78,18 @@ namespace Tasker
 
         public string GetTasks(int priorityId)
         {
-            IEnumerable<Task> listTasks;
             try
             {
+                IEnumerable<Task> listTasks;
                 using (var conn = new TaskerDataModel())
                 {
                     listTasks = conn.Tasks.Where(i => i.priority == priorityId);
                 }
 
+                string result = JsonConvert.SerializeObject(listTasks);
+
                 //TODO serializowac i przesłac do klienta
-                return listTasks.ToString();
+                return result;
             }
             catch (Exception e)
             {

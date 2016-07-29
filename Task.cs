@@ -12,31 +12,29 @@ namespace Tasker
     {
         [Key]
         [DataMember]
-        int id { get; set; }
+        public int id { get; set; }
 
         [DataMember]
-        string name { get; set; }
+        public string name { get; set; }
 
         [DataMember]
-        string description { get; set; }
+        public string description { get; set; }
 
         [DataMember]
         public int priority { get; set; }
 
         
-        DateTime createDate;
-
         [DataMember]
         public DateTime CreateDate
         {
-            get { return createDate; }
-            set { createDate = DateTime.Now; }
+            get { return CreateDate; }
+            set { CreateDate = DateTime.Now; }
         }
 
         [DataMember]
-        DateTime deadlineDate { get; set; }
+        public DateTime deadlineDate { get; set; }
 
-        bool isFinished = false;
+        public bool isFinished = false;
 
         [DataMember]
         public bool IsFinished

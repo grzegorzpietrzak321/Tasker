@@ -15,7 +15,7 @@ namespace Tasker
         public TaskerDataModel()
             : base("name=TaskerDataModel")
         {
-            Database.SetInitializer(new DropCreateDatabaseIfModelChanges<TaskerDataModel>());
+            Database.SetInitializer(new TaskerDataInitializer());
         }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
@@ -23,7 +23,7 @@ namespace Tasker
             
         }
             public DbSet<Task> Tasks { get; set; }
-        //TODO dbset
+        //TODO seed bazy
 
         //TODO connection string
         
