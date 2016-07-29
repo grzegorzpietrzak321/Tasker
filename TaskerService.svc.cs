@@ -15,40 +15,32 @@ namespace Tasker
     // NOTE: In order to launch WCF Test Client for testing this service, please select TaskerService.svc or TaskerService.svc.cs at the Solution Explorer and start debugging.
     public class TaskerService : ITaskerService
     { 
-        SqlConnection connection;
-        SqlCommand command;
-        SqlConnectionStringBuilder connectionStringBuilder;
+        //SqlConnection connection;
+        //SqlCommand command;
+        //SqlConnectionStringBuilder connectionStringBuilder;
 
-        public TaskerService()
-        {
-            ConnectToDB();
-        }
+       // public TaskerService()
+        //{
+       //     ConnectToDB();
+      //  }
 
-        private void ConnectToDB()
-        {
-            connectionStringBuilder = new SqlConnectionStringBuilder();
-            connectionStringBuilder.DataSource = "PC";
-            connectionStringBuilder.InitialCatalog = "TaskerDB";
-            connectionStringBuilder.IntegratedSecurity = true;
+       // private void ConnectToDB()
+        //{
+        //    connectionStringBuilder = new SqlConnectionStringBuilder();
+        //    connectionStringBuilder.DataSource = "PC";
+        //    connectionStringBuilder.InitialCatalog = "TaskerDB";
+       //     connectionStringBuilder.IntegratedSecurity = true;
 
-            connection = new SqlConnection(connectionStringBuilder.ToString());
-            command = connection.CreateCommand();
-        }
+       //     connection = new SqlConnection(connectionStringBuilder.ToString());
+       //     command = connection.CreateCommand();
+       // }
 
         public bool CreateTask(Task task)
         {
-            
-            Task lastElement;
-            //pobieramy ostatni element z tablicy
-            
             try
             {
                 using (var conn = new TaskerDataModel())
                 {
-                    lastElement = conn.Tasks.Last();
-
-                    task.id = lastElement.id++;
-
                     conn.Tasks.Add(task);
                     conn.SaveChanges();
                 }
@@ -56,19 +48,17 @@ namespace Tasker
             }
             catch (Exception)
             {
-                
                 return false;
             }
         }
 
-        public bool EditTask(int taskId, Task t)
+        public bool EditTask(Task t)
         {
-
             try
             {
                 using (var conn = new TaskerDataModel())
                 {
-                    var listTasks = conn.Tasks.Where(i => i.id == taskId);
+                    var listTasks = conn.Tasks.Where(i => i.id == t.id);
                     listTasks.SingleOrDefault().name = t.name;
                     listTasks.SingleOrDefault().description = t.description;
                     listTasks.SingleOrDefault().deadlineDate= t.deadlineDate;
@@ -87,7 +77,6 @@ namespace Tasker
         {
             try
             {
-                
                 using (var conn = new TaskerDataModel())
                 {
                     var listTasks = conn.Tasks.Where(i => i.id == taskId);
@@ -98,7 +87,6 @@ namespace Tasker
             }
             catch (Exception e)
             {
-
                 return false;
             }
         }
@@ -128,17 +116,14 @@ namespace Tasker
         {
             try
             {
-                IEnumerable<Task> listTasks;
+            IEnumerable<Task> listTasks;
             string result;
                 using (var conn = new TaskerDataModel())
                 {
                     listTasks = conn.Tasks.Where(i => i.priority == priorityId);
-                result = JsonConvert.SerializeObject(listTasks);
-            }
-
+                    result = JsonConvert.SerializeObject(listTasks);
+                }
                 
-
-                //TODO serializowac i przesłac do klienta
                 return result;
             }
             catch (Exception e)

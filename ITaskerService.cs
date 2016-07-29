@@ -15,7 +15,7 @@ namespace Tasker
         bool CreateTask(Task t);
 
         [OperationContract]
-        bool EditTask(int taskId, Task t);
+        bool EditTask(Task t);
 
         [OperationContract]
         bool FinishTask(int taskId);
