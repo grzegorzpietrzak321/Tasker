@@ -61,19 +61,67 @@ namespace Tasker
             }
         }
 
-        public bool EditTask(Task t)
+        public bool EditTask(int taskId, Task t)
         {
-            throw new NotImplementedException();
+
+            try
+            {
+                using (var conn = new TaskerDataModel())
+                {
+                    var listTasks = conn.Tasks.Where(i => i.id == taskId);
+                    listTasks.SingleOrDefault().name = t.name;
+                    listTasks.SingleOrDefault().description = t.description;
+                    listTasks.SingleOrDefault().deadlineDate= t.deadlineDate;
+                    listTasks.SingleOrDefault().priority = t.priority;
+                    conn.SaveChanges();
+                }
+                return true;
+            }
+            catch (Exception e)
+            {
+                return false;
+            }
         }
 
         public bool FinishTask(int taskId)
         {
-            throw new NotImplementedException();
+            try
+            {
+                
+                using (var conn = new TaskerDataModel())
+                {
+                    var listTasks = conn.Tasks.Where(i => i.id == taskId);
+                    listTasks.FirstOrDefault().isFinished = true;
+                    conn.SaveChanges();
+                }
+                return true;
+            }
+            catch (Exception e)
+            {
+
+                return false;
+            }
         }
 
         public string ShowTask(int taskId)
         {
-            throw new NotImplementedException();
+            string result = null;
+
+            try
+            {
+                IEnumerable<Task> listTasks;
+                using (var conn = new TaskerDataModel())
+                {
+                    listTasks = conn.Tasks.Where(i => i.id == taskId);
+                    result = JsonConvert.SerializeObject(listTasks);
+                }
+                return result;
+            }
+            catch (Exception e)
+            {
+                    
+                return e.ToString();
+            }
         }
 
         public string GetTasks(int priorityId)
@@ -81,12 +129,14 @@ namespace Tasker
             try
             {
                 IEnumerable<Task> listTasks;
+            string result;
                 using (var conn = new TaskerDataModel())
                 {
                     listTasks = conn.Tasks.Where(i => i.priority == priorityId);
-                }
+                result = JsonConvert.SerializeObject(listTasks);
+            }
 
-                string result = JsonConvert.SerializeObject(listTasks);
+                
 
                 //TODO serializowac i przesłac do klienta
                 return result;
