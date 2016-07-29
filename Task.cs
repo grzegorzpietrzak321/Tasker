@@ -27,7 +27,7 @@ namespace Tasker
         public DateTime deadlineDate { get; set; }
 
         [DataMember]
-        public bool isFinished = false;
+        public bool isFinished { get; set; }
 
         [DataMember]
         public DateTime CreateDate;

@@ -41,6 +41,7 @@ namespace Tasker
             {
                 using (var conn = new TaskerDataModel())
                 {
+                    //task.isFinished = false;
                     conn.Tasks.Add(task);
                     conn.SaveChanges();
                 }
@@ -120,7 +121,7 @@ namespace Tasker
             string result;
                 using (var conn = new TaskerDataModel())
                 {
-                    listTasks = conn.Tasks.Where(i => i.priority == priorityId);
+                    listTasks = conn.Tasks.Where(i => (i.priority == priorityId));
                     result = JsonConvert.SerializeObject(listTasks);
                 }
                 
