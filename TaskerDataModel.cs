@@ -23,9 +23,9 @@ namespace Tasker
             
         }
             public DbSet<Task> Tasks { get; set; }
-        //TODO seed bazy
+        
 
-        //TODO connection string
+        
         
         // Add a DbSet for each entity type that you want to include in your model. For more information 
         // on configuring and using a Code First model, see http://go.microsoft.com/fwlink/?LinkId=390109.
